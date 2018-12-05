@@ -3,3 +3,7 @@
 ################################################################################
 
 /.vs/IndoorNavigation
+/IndoorNavigation/IndoorNavigation/bin
+/IndoorNavigation/IndoorNavigation/obj
+/IndoorNavigation/IndoorNavigation.Android/bin/Debug
+/IndoorNavigation/IndoorNavigation.Android/obj

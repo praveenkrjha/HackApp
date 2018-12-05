@@ -1,0 +1,452 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IndoorNavigation.App">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <!--<util:StringToBoolConverter x:Key="StringToBoolConverter"/>
+            <converters:NetDeltaHours x:Key="cnvNetDeltaHours"></converters:NetDeltaHours>
+            <util:DoubleToTimeStringConverter x:Key="DoubleToTimeStringConverter"/>
+            --><!--<converters:DoubleToString x:Key="cnvNetDeltaHours"></converters:DoubleToString>--><!--
+            <converters:DoubleToColor x:Key="cnvNetDeltaHoursColor"></converters:DoubleToColor>
+            <converters:IntToString x:Key="cnvSelectedShifts"></converters:IntToString>
+            <converters:DateToDayMonthStringConverter x:Key="cnvDateToDayMonthStringConverter"/>
+            <converters:MyEarnedPuchesButtonVisiblityConverter x:Key="cnvMyEarnedPuchesAcknowledButtonVisiblityConverter"></converters:MyEarnedPuchesButtonVisiblityConverter>
+            <converters:MyEarnedPuchesDisputedButtonVisiblityConverter x:Key="cnvMyEarnedPuchesDisputedButtonVisiblityConverter"></converters:MyEarnedPuchesDisputedButtonVisiblityConverter>-->
+
+            <Color x:Key="BaseFontColor">#505050</Color>
+
+            <Style x:Key="BoldLabelStyle" TargetType="Label"  BaseResourceKey="BoldTextStyle">
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="TextColor" Value="{StaticResource BaseFontColor}"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="FontFamily" Value="ProductSansBold.ttf#Product Sans"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
+            <Style x:Key="HeaderLabelStyle" TargetType="Label"  BaseResourceKey="HeaderTextStyle">
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="TextColor" Value="{StaticResource BaseFontColor}"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="FontFamily" Value="ProductSansBold.ttf#Product Sans"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="MinimumHeightRequest" Value="50"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+
+            <!-- FontSize -->
+            <x:Double x:Key="font10">10</x:Double>
+            <x:Double x:Key="font11">11</x:Double>
+            <x:Double x:Key="font12">12</x:Double>
+            <x:Double x:Key="font13">13</x:Double>
+            <x:Double x:Key="font14">14</x:Double>
+            <x:Double x:Key="font15">15</x:Double>
+            <x:Double x:Key="font16">16</x:Double>
+            <x:Double x:Key="font17">17</x:Double>
+            <x:Double x:Key="font18">18</x:Double>
+            <x:Double x:Key="font19">19</x:Double>
+            <x:Double x:Key="font20">20</x:Double>
+            <x:Double x:Key="font21">21</x:Double>
+            <x:Double x:Key="font22">22</x:Double>
+            <x:Double x:Key="font23">23</x:Double>
+            <x:Double x:Key="font24">24</x:Double>
+
+            <!-- Old Theme starts here - It needs to be deleted.-->
+            <Color x:Key="textHeadingColor">#505050</Color>
+            <Color x:Key="textDescriptionColor">#989898</Color>
+            <Color x:Key="textSubHeadingColor">#717171</Color>
+            <Color x:Key="buttonTextNegativeColor">#00A9E0</Color>
+            <Color x:Key="buttonTextPositiveColor">#0078BD</Color>
+            <Color x:Key="genericWhiteColor">#FFFFFF</Color>
+            <Color x:Key="genericBlackColor">#000000</Color>
+            <Color x:Key="inPageControlColor">#F8F8F8</Color>
+            <Color x:Key="tabTextSelectedColor">#007AB4</Color>
+            <Color x:Key="tabTextUnSelectedColor">#2E2E2E</Color>
+
+            <Color x:Key="approvedTextColor">#417505</Color>
+
+            <x:String x:Key="regular">ProductSansRegular.ttf#Product Sans</x:String>
+            <x:String x:Key="bold">ProductSansBold.ttf#Product Sans</x:String>
+            <Style x:Key="pageBackgroundStyle" TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="{StaticResource genericWhiteColor}" />
+            </Style>
+            <Style x:Key="listItemBackgroundStyle" TargetType="StackLayout">
+                <Setter Property="BackgroundColor" Value="{StaticResource genericWhiteColor}"/>
+            </Style>
+            <Style x:Key="tabPageHeaderStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource textHeadingColor}"/>
+                <Setter Property="FontSize" Value="{StaticResource font16}"/>
+                <Setter Property="FontFamily" Value="{StaticResource bold}"/>
+            </Style>
+            <Style x:Key="labelHeadingStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource textHeadingColor}" />
+                <Setter Property="FontSize" Value="{StaticResource font16}"/>
+                <Setter Property="FontFamily" Value="{StaticResource regular}"/>
+            </Style>
+            <Style x:Key="labelSubHeadingStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource textHeadingColor}" />
+                <Setter Property="FontSize" Value="{StaticResource font12}"/>
+                <Setter Property="FontFamily" Value="{StaticResource bold}"/>
+            </Style>
+            <Style x:Key="labelDescriptionStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource textHeadingColor}" />
+                <Setter Property="FontSize" Value="{StaticResource font12}"/>
+                <Setter Property="FontFamily" Value="{StaticResource regular}"/>
+            </Style>
+            <Style x:Key="labelInPageHeadingStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource textDescriptionColor}" />
+                <Setter Property="FontSize" Value="{StaticResource font12}"/>
+                <Setter Property="FontFamily" Value="{StaticResource regular}"/>
+            </Style>
+            <Style x:Key="labelDescription10PointsStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource textDescriptionColor}" />
+                <Setter Property="FontSize" Value="{StaticResource font10}"/>
+                <Setter Property="FontFamily" Value="{StaticResource regular}"/>
+            </Style>
+            <Style x:Key="labelInPageHeading2Style" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource textHeadingColor}" />
+                <Setter Property="FontSize" Value="{StaticResource font16}"/>
+                <Setter Property="FontFamily" Value="{StaticResource bold}"/>
+            </Style>
+            <Style x:Key="labelMoreTabStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource textHeadingColor}" />
+                <Setter Property="FontSize" Value="{StaticResource font14}"/>
+                <Setter Property="FontFamily" Value="{StaticResource regular}"/>
+            </Style>
+            <Style x:Key="labelHeading14BoldStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource textHeadingColor}" />
+                <Setter Property="FontSize" Value="{StaticResource font14}"/>
+                <Setter Property="FontFamily" Value="{StaticResource bold}"/>
+            </Style>
+            <Style x:Key="labelCountStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource buttonTextPositiveColor}" />
+                <Setter Property="FontSize" Value="{StaticResource font14}"/>
+                <Setter Property="FontFamily" Value="{StaticResource regular}"/>
+            </Style>
+            <Style x:Key="countBackgroundStyle" TargetType="StackLayout">
+                <Setter Property="BackgroundColor" Value="{StaticResource inPageControlColor}"/>
+            </Style>
+            <Style x:Key="headerFrameSelatedStyle" TargetType="Frame">
+                <Setter Property="BorderColor" Value="{StaticResource buttonTextPositiveColor}"/>
+            </Style>
+            <Style x:Key="headerFrameUnSelatedStyle" TargetType="Frame">
+                <Setter Property="BorderColor" Value="{StaticResource textHeadingColor}"/>
+            </Style>
+            <Style x:Key="headerCountSelatedStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource buttonTextPositiveColor}" />
+                <Setter Property="FontSize" Value="{StaticResource font10}"/>
+                <Setter Property="FontFamily" Value="{StaticResource regular}"/>
+            </Style>
+            <Style x:Key="headerCountUnSelatedStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource textHeadingColor}" />
+                <Setter Property="FontSize" Value="{StaticResource font10}"/>
+                <Setter Property="FontFamily" Value="{StaticResource regular}"/>
+            </Style>
+            <Style x:Key="headerLineUnSelatedStyle" TargetType="StackLayout">
+                <Setter Property="BackgroundColor" Value="{StaticResource textHeadingColor}"/>
+            </Style>
+            <Style x:Key="headerLineSelatedStyle" TargetType="StackLayout">
+                <Setter Property="BackgroundColor" Value="{StaticResource buttonTextPositiveColor}"/>
+            </Style>
+            <!--Old Theme ends here - It needs to be deleted.-->
+
+
+            <!-- Colors used in app -->
+            <Color x:Key="foregroundPrimeryColor">#00A9E0</Color>
+            <Color x:Key="foregroundSecondryColor">#004F71</Color>
+            <Color x:Key="foregroundAccentColor">#FF9A13</Color>
+
+            <Color x:Key="textPrimeryColor">#231F20</Color>
+            <Color x:Key="textSecondryColor">#6A6A6A</Color>
+            <Color x:Key="textSecondry2Color">#231F20</Color>
+
+            <Color x:Key="backgroundPrimeryColor">#FFFFFF</Color>
+            <Color x:Key="backgroundSecondryColor">#F5F5F5</Color>
+            <Color x:Key="buttonSecondaryColor">#9A9A9A</Color>
+
+            <Color x:Key="baseThemeColor">#00A9E0</Color>
+            <Color x:Key="transparentColor">#CC000000</Color>
+            <Color x:Key="grayColor">#D3D3D3</Color>
+
+            <Color x:Key="approvedColor">#6EAD28</Color>
+            <Color x:Key="rejectedTextColor">#D0021B</Color>
+            <Color x:Key="awaitingTextColor">#F5A623</Color>
+            <!-- FontFamily -->
+            <x:String x:Key="boldLato">LatoBold.ttf#Lato Bold</x:String>
+            <x:String x:Key="regularLato">LatoRegular.ttf#Lato Regular</x:String>
+            <x:String x:Key="semiBoldLato">LatoSemibold.ttf#Lato Semibold</x:String>
+
+            <!-- Button Border Radius-->
+            <x:Int32 x:Key="buttonBorderRadius">22</x:Int32>
+            <x:Int32 x:Key="buttonBorderWidth">1</x:Int32>
+            <x:Int32 x:Key="buttonHeight">45</x:Int32>
+
+
+
+            <!-- Generic Styles-->
+            <!-- Background Style-->
+            <Style x:Key="pageBackgroundPrimaryStyle" TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="{DynamicResource backgroundPrimeryColor}"/>
+            </Style>
+
+            <Style x:Key="pageBackgroundSecondryStyle" TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="{StaticResource backgroundSecondryColor}"/>
+            </Style>
+
+            <Style x:Key="tabUnderLineStyle" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="{StaticResource foregroundPrimeryColor}"/>
+            </Style>
+
+            <!-- Screen Title Text Style-->
+            <Style x:Key="screenTitleTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource textPrimeryColor}"/>
+                <Setter Property="FontSize" Value="{StaticResource font18}"/>
+                <Setter Property="FontFamily" Value="{StaticResource boldLato}"/>
+            </Style>
+
+            <!-- Next and Prev Text Style-->
+            <Style x:Key="nextAndPrevTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource foregroundPrimeryColor}"/>
+                <Setter Property="FontSize" Value="{StaticResource font12}"/>
+                <Setter Property="FontFamily" Value="{StaticResource semiBoldLato}"/>
+            </Style>
+
+            <!-- Regular Text Style-->
+            <Style x:Key="regularTextPrimeryStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource textPrimeryColor}"/>
+                <Setter Property="FontSize" Value="{StaticResource font16}"/>
+                <Setter Property="FontFamily" Value="{StaticResource regularLato}"/>
+            </Style>
+            <Style x:Key="regular2TextPrimeryStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource textPrimeryColor}"/>
+                <Setter Property="FontSize" Value="{StaticResource font14}"/>
+                <Setter Property="FontFamily" Value="{StaticResource regularLato}"/>
+            </Style>
+
+            <Style x:Key="regularTextSecondryStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource textSecondryColor}"/>
+                <Setter Property="FontSize" Value="{StaticResource font16}"/>
+                <Setter Property="FontFamily" Value="{StaticResource regular}"/>
+            </Style>
+            <Style x:Key="regularTextSecondry2Style" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource textSecondry2Color}"/>
+                <Setter Property="FontSize" Value="{StaticResource font14}"/>
+                <Setter Property="FontFamily" Value="{StaticResource regularLato}"/>
+            </Style>
+
+            <Style x:Key="regularTextSecondry3Style" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource textSecondry2Color}"/>
+                <Setter Property="FontSize" Value="{StaticResource font18}"/>
+                <Setter Property="FontFamily" Value="{StaticResource regularLato}"/>
+            </Style>
+
+
+            <!-- Header 1 Style-->
+            <Style x:Key="header1Style" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource textPrimeryColor}"/>
+                <Setter Property="FontSize" Value="{StaticResource font18}"/>
+                <Setter Property="FontFamily" Value="{StaticResource semiBoldLato}"/>
+            </Style>
+
+            <Style x:Key="textBoldPrimeryStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource textPrimeryColor}"/>
+                <Setter Property="FontSize" Value="{StaticResource font16}"/>
+                <Setter Property="FontFamily" Value="{StaticResource boldLato}"/>
+            </Style>
+
+            <!-- Header 2 Style-->
+            <Style x:Key="header2PrimeryStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource textPrimeryColor}"/>
+                <Setter Property="FontSize" Value="{StaticResource font14}"/>
+                <Setter Property="FontFamily" Value="{StaticResource semiBoldLato}"/>
+            </Style>
+
+            <Style x:Key="header2PrimeryRegularStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource textPrimeryColor}"/>
+                <Setter Property="FontSize" Value="{StaticResource font14}"/>
+                <Setter Property="FontFamily" Value="{StaticResource regularLato}"/>
+            </Style>
+
+            <Style x:Key="header2SecondryStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource textSecondryColor}"/>
+                <Setter Property="FontSize" Value="{StaticResource font14}"/>
+                <Setter Property="FontFamily" Value="{StaticResource semiBoldLato}"/>
+            </Style>
+
+            <Style x:Key="header3SecondryStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource textSecondry2Color}"/>
+                <Setter Property="FontSize" Value="{StaticResource font14}"/>
+                <Setter Property="FontFamily" Value="{StaticResource semiBoldLato}"/>
+            </Style>
+
+            <Style x:Key="header4SecondryStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource textSecondry2Color}"/>
+                <Setter Property="FontSize" Value="{StaticResource font18}"/>
+                <Setter Property="FontFamily" Value="{StaticResource semiBoldLato}"/>
+            </Style>
+
+
+            <!-- Info Text Style-->
+            <Style x:Key="infoTextBoldPrimeryStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource textPrimeryColor}"/>
+                <Setter Property="FontSize" Value="{StaticResource font12}"/>
+                <Setter Property="FontFamily" Value="{StaticResource boldLato}"/>
+            </Style>
+
+            <Style x:Key="infoTextBoldSecondryStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource textSecondryColor}"/>
+                <Setter Property="FontSize" Value="{StaticResource font12}"/>
+                <Setter Property="FontFamily" Value="{StaticResource boldLato}"/>
+            </Style>
+
+            <Style x:Key="infoTextRegularSecondryStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource textSecondryColor}"/>
+                <Setter Property="FontSize" Value="{StaticResource font14}"/>
+                <Setter Property="FontFamily" Value="{StaticResource regularLato}"/>
+            </Style>
+
+            <Style x:Key="infoTextBoldForegroundPrimeryStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource foregroundPrimeryColor}"/>
+                <Setter Property="FontSize" Value="{StaticResource font12}"/>
+                <Setter Property="FontFamily" Value="{StaticResource boldLato}"/>
+            </Style>
+            <Style x:Key="linkTextBoldForegroundPrimeryStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource foregroundPrimeryColor}"/>
+                <Setter Property="FontSize" Value="{StaticResource font14}"/>
+                <Setter Property="FontFamily" Value="{StaticResource semiBoldLato}"/>
+            </Style>
+
+
+            <Style x:Key="infoTextSemiBoldPrimeryStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource textPrimeryColor}"/>
+                <Setter Property="FontSize" Value="{StaticResource font12}"/>
+                <Setter Property="FontFamily" Value="{StaticResource semiBoldLato}"/>
+            </Style>
+
+            <Style x:Key="infoTextSemiBoldSecondryStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource textSecondryColor}"/>
+                <Setter Property="FontSize" Value="{StaticResource font12}"/>
+                <Setter Property="FontFamily" Value="{StaticResource semiBoldLato}"/>
+            </Style>
+
+            <Style x:Key="infoTextSemiBoldForegroundPrimeryStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource foregroundPrimeryColor}"/>
+                <Setter Property="FontSize" Value="{StaticResource font12}"/>
+                <Setter Property="FontFamily" Value="{StaticResource semiBoldLato}"/>
+            </Style>
+
+            <!-- Notification Count Background Style-->
+            <Style x:Key="notificationCountBackgroundStyle" TargetType="StackLayout">
+                <Setter Property="BackgroundColor" Value="{StaticResource foregroundAccentColor}"/>
+            </Style>
+
+            <Style x:Key="notificationCountTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource backgroundPrimeryColor}"/>
+                <Setter Property="FontSize" Value="{StaticResource font14}"/>
+                <Setter Property="FontFamily" Value="{StaticResource boldLato}"/>
+            </Style>
+
+            <!-- Button Style-->
+            <Style x:Key="buttonPositiveStyle" TargetType="Button">
+                <Setter Property="TextColor" Value="{StaticResource backgroundPrimeryColor}"/>
+                <Setter Property="FontSize" Value="{StaticResource font16}"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource foregroundPrimeryColor}"/>
+                <Setter Property="FontFamily" Value="{StaticResource semiBoldLato}"/>
+                <Setter Property="HeightRequest" Value="{StaticResource buttonHeight}"/>
+                <Setter Property="BorderRadius" Value="{StaticResource buttonBorderRadius}"/>
+            </Style>
+
+            <Style x:Key="buttonNegativeStyle" TargetType="Button">
+                <Setter Property="TextColor" Value="{StaticResource buttonTextNegativeColor}" />
+                <Setter Property="FontSize" Value="{StaticResource font16}"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource backgroundPrimeryColor}"/>
+                <Setter Property="BorderColor" Value="{StaticResource buttonTextNegativeColor}"/>
+                <Setter Property="BorderWidth" Value="{StaticResource buttonBorderWidth}"/>
+                <Setter Property="FontFamily" Value="{StaticResource semiBoldLato}"/>
+                <Setter Property="HeightRequest" Value="{StaticResource buttonHeight}"/>
+                <Setter Property="BorderRadius" Value="{StaticResource buttonBorderRadius}"/>
+            </Style>
+
+            <Style x:Key="CenterLabelStyle" TargetType="Label"  BaseResourceKey="BaseTextStyle">
+                <Setter Property="FontSize" Value="13"/>
+                <Setter Property="TextColor" Value="{StaticResource BaseFontColor}"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="FontFamily" Value="ProductSansRegular.ttf#Product Sans"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+
+
+            <!-- Common Label Styles -->
+            <Style x:Key="SecondaryLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="TextColor" Value="{StaticResource textSecondryColor}"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="FontFamily" Value="{StaticResource regularLato}"/>
+            </Style>
+
+            <Style x:Key="BasicLabelStyle" TargetType="Label" >
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="TextColor" Value="{StaticResource textSecondry2Color}"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="FontFamily" Value="{StaticResource regularLato}"/>
+            </Style>
+
+            <Style x:Key="BasicSemiBoldLabelStyle" TargetType="Label"  BaseResourceKey="BaseSemiBoldTextStyle">
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="TextColor" Value="{StaticResource textSecondry2Color}"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="FontFamily" Value="{StaticResource semiBoldLato}"/>
+            </Style>
+
+            <Style x:Key="BasicBoldLabelStyle" TargetType="Label"  BaseResourceKey="BaseBoldTextStyle">
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="TextColor" Value="{StaticResource textSecondry2Color}"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="FontFamily" Value="{StaticResource boldLato}"/>
+            </Style>
+
+            <Style x:Key="BorderedButtonStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="{StaticResource font16}"/>
+                <Setter Property="TextColor" Value="{StaticResource baseThemeColor}"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="FontFamily" Value="{StaticResource regularLato}"/>
+                <Setter Property="BorderColor" Value="{StaticResource baseThemeColor}"/>
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="BorderRadius" Value="15"/>
+                <Setter Property="BorderWidth" Value="1"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource genericWhiteColor}"/>
+            </Style>
+            <Style x:Key="GenericButtonStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="{StaticResource font16}"/>
+                <Setter Property="TextColor" Value="{StaticResource genericWhiteColor}"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="FontFamily" Value="{StaticResource regularLato}"/>
+                <Setter Property="BorderColor" Value="{StaticResource baseThemeColor}"/>
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="BorderRadius" Value="15"/>
+                <Setter Property="BorderWidth" Value="1"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource baseThemeColor}"/>
+            </Style>
+
+            <!-- _______________________________________________________________________________________________ -->
+            <!-- App Theme -->
+            <!-- Label Heading Style Theme : labelHeadingStyleTheme -->
+            <!-- Label SubHeading Style Theme : labelSubHeadingStyleTheme -->
+            <!-- Label Description Style Theme : labelDescriptionStyleTheme -->
+            <!-- Label InPage Heading Style Theme : labelInPageHeadingStyleTheme -->
+            <!-- Label InPageHeading2 Style Theme : labelInPageHeading2StyleTheme -->
+            <!-- Button Positive Style Theme : buttonPositiveStyleTheme -->
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

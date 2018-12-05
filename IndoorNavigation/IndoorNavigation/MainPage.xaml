@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:IndoorNavigation"
+             xmlns:customcontrols="clr-namespace:IndoorNavigation.CustomControls"
+             x:Class="IndoorNavigation.MainPage">
+
+    <ContentPage.Content>
+        <ScrollView x:Name="loginScroll">
+            <AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <StackLayout BackgroundColor="White" Orientation="Vertical" HorizontalOptions="FillAndExpand" 
+                             VerticalOptions="FillAndExpand"
+                     AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="4*"/>
+                            <RowDefinition Height="6*"/>
+                        </Grid.RowDefinitions>
+                        <StackLayout Orientation="Vertical" Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <Image Source="jda_transparent.png" WidthRequest="180" HeightRequest="95" HorizontalOptions="CenterAndExpand" 
+                                   VerticalOptions="CenterAndExpand">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" NumberOfTapsRequired="2"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <StackLayout VerticalOptions="End" HorizontalOptions="FillAndExpand" Padding="0,0,-2,0">
+                                <Image Source="login_oval.png" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                            </StackLayout>
+                        </StackLayout>
+                        <customcontrols:GradientColorStack Grid.Row="1" StartColor="#0461A4" EndColor="#032559" Orientation="Vertical" 
+                                                           Padding="30,50,30,20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                            <StackLayout Spacing="0" Orientation="Vertical" x:Name="stkUName" VerticalOptions="FillAndExpand">
+                                <Label x:Name="UsernameLabel" Text="Username" TextColor="White" Style="{DynamicResource regularTextPrimeryStyleTheme}"/>
+                                <Entry x:Name="UsernameEntry" Unfocused="Username_Focussed" Focused="Username_Focussed" 
+                                                                 Placeholder="" PlaceholderColor="DimGray" 
+                                                                 Text="{Binding LoginName}" BackgroundColor="Transparent" TextColor="White" FontSize="20" Style="{DynamicResource regularTextPrimeryStyleTheme}"/>
+                                <!--<Label x:Name="UsernameErrorLabel" IsVisible="{Binding IsUsernameError, Mode=TwoWay}" Text="Username*" TextColor="Red" Style="{DynamicResource regularTextPrimeryStyleTheme}" FontSize="12"/>-->
+                            </StackLayout>
+                            <StackLayout Spacing="0" Padding="0,20,0,0" Orientation="Vertical" VerticalOptions="FillAndExpand" IsVisible="False" x:Name="stkPwd">
+                                <Label x:Name="PasswordLabel" Text="Password" TextColor="White" Style="{DynamicResource regularTextPrimeryStyleTheme}"/>
+                                <Entry x:Name="PasswordEntry" Unfocused="Password_Focussed" Focused="Password_Focussed" 
+                                                                 Placeholder="" PlaceholderColor="DimGray"
+                                                                 BackgroundColor="Transparent" Text="{Binding Password}" TextColor="White" FontSize="20" IsPassword="True" Style="{DynamicResource regularTextPrimeryStyleTheme}"/>
+                                <!--<Label x:Name="PasswordErrorLabel" IsVisible="{Binding IsPasswordError, Mode=TwoWay}" Text="Password*" TextColor="Red" Style="{DynamicResource regularTextPrimeryStyleTheme}" FontSize="12"/>-->
+                            </StackLayout>
+                            <StackLayout IsVisible="False" HorizontalOptions="End" Padding="0,10,0,0" VerticalOptions="FillAndExpand">
+                                <Label FontSize="14" Text="Forgot Password" TextColor="White" Style="{DynamicResource regularTextPrimeryStyleTheme}"/>
+                            </StackLayout>
+                            <StackLayout VerticalOptions="End">
+                                <Button x:Name="LoginButton" CornerRadius="50" HeightRequest="45" BackgroundColor="#4195D1" Text="Continue" TextColor="White" 
+                                        Clicked="Button_Clicked" Style="{DynamicResource regularTextPrimeryStyleTheme}"/>
+                            </StackLayout>
+                        </customcontrols:GradientColorStack>
+                    </Grid>
+                </StackLayout>
+                <StackLayout BackgroundColor="WhiteSmoke" x:Name="URLStack" IsVisible="False" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Margin="20" Padding="20"
+                             AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                    <Entry x:Name="urlEntry" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                    <Button HorizontalOptions="FillAndExpand" Text="OK" Clicked="Button_Clicked"/>
+                </StackLayout>
+                <!--<viewcomponents:LoadingViewComponent/>-->
+            </AbsoluteLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

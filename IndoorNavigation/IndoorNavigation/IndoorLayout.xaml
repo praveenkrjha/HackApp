@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IndoorNavigation.IndoorLayout">
+    <ContentPage.Content>
+        <StackLayout>
+            <AbsoluteLayout HeightRequest="552" WidthRequest="240" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" x:Name="abs">
+                <Image AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Source="FloorPlan.png">
+
+                </Image>
+            </AbsoluteLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
