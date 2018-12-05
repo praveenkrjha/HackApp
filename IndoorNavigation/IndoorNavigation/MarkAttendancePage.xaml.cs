@@ -1,4 +1,6 @@
-﻿using System;
+﻿using JDA.Entities.Request;
+using JDA.Entities.Response;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,12 +19,36 @@ namespace IndoorNavigation
         {
             InitializeComponent();
             DependencyService.Get<IFingerprint>().Authenticate();
-            MessagingCenter.Subscribe<FModel>(this, "Hello", (s) =>
+            MessagingCenter.Subscribe<FModel>(this, "Hello", async(s) =>
              {
-                 Navigation.PopAsync();
                  MessagingCenter.Unsubscribe<FModel>(this, "Hello");
+                 try
+                 {
+                     bool resp = await MarkAttendance();
+                     if (resp)
+                     {
+                         await DisplayAlert("Info", "Attendance marked", "Ok");
+                     }
+                     else
+                     {
+                         await DisplayAlert("Alert", "Attendance not marked", "OK");
+                     }
+                     await Navigation.PopAsync();
+                 }
+                 catch (Exception ex)
+                 {
+                     Console.WriteLine(ex);
+                 }
              });
         }
+
+        private async Task<bool> MarkAttendance()
+        {
+            var restClient = new RestClient();
+            var resp = await restClient.PostAsync<BlankRequest, ServiceResponse<string>>(AppConstants.BaseUrl + "Attendance", new BlankRequest { Id = 1 });
+            return resp.IsSuccess;
+        }
+
 
         public static void FPNavigate()
         {
