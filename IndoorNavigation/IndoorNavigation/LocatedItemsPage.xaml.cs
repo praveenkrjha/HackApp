@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JDA.Entities.Response;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,23 @@ namespace IndoorNavigation
             InitializeComponent();
             Vm = new ItemListViewModel();
             this.BindingContext = Vm;
-            LstView.HeightRequest = Vm.model.Count * 80;
+            if(Vm != null && Vm.Products != null && Vm.Products.Count>0)
+            {
+                LstView.HeightRequest = Vm.Products.Count * 80;
+            }
+            else
+            {
+                LstView.HeightRequest = 0;
+            }
+            if (Vm != null && Vm.Facilities != null && Vm.Facilities.Count > 0)
+            {
+                LstView1.HeightRequest = Vm.Facilities.Count * 80;
+            }
+            else
+            {
+                LstView1.HeightRequest = 0;
+            }
         }
+      
     }
 }

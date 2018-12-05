@@ -47,7 +47,7 @@
                     <Frame HeightRequest="150" WidthRequest="150" CornerRadius="100" Padding="0" HasShadow="False" BackgroundColor="#FF9800">
                         <StackLayout x:Name="InnerStk" Orientation="Vertical" Spacing="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                             <Label Text="Locate" LineBreakMode="WordWrap" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="20" TextColor="White"/>
-                            <Label Text="Product" LineBreakMode="WordWrap" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="20" TextColor="White"/>
+                            <!--<Label Text="" LineBreakMode="WordWrap" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="20" TextColor="White"/>-->
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" NumberOfTapsRequired="1"/>
                             </StackLayout.GestureRecognizers>
