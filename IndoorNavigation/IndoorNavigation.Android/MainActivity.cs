@@ -13,6 +13,7 @@ using Android.Support.V4.App;
 using Android.Content;
 using System.Drawing;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace IndoorNavigation.Droid
 {
@@ -101,51 +102,100 @@ namespace IndoorNavigation.Droid
 
         void RangingBeaconsInRegion(object sender, RangeEventArgs e)
         {
-            if (e.Beacons.Count > 0)
+            Console.WriteLine("Found beacons :" + e.Beacons.Count);
+            foreach (var item in e.Beacons)
             {
-                var beacon = e.Beacons.FirstOrDefault();
-                
-                var message = string.Empty;
-                var rssi = beacon.Rssi;
-                var distance1 = Math.Pow(10, ((float)(rssi + 65) * -1) / 20);
-                DistanceModel distance = new DistanceModel();
-                foreach(var beac in e.Beacons)
+
+                Console.WriteLine(" Beacon Major : " + item.Major + " Minor : " + item.Minor);
+
+                //var dist = Math.Pow(10, ((float)(item.Rssi + 65) * -1) / 40) * 100;
+                var beaconItem = IndoorLayout.FoundBeacons.FirstOrDefault(x => x.Major == item.Major && x.Minor == item.Minor);
+                if (beaconItem != null)
                 {
-                    if(beac.Major == 829 && beac.Minor == 0)
+                    if(beaconItem.Rssis == null)
                     {
-                        distance.Dist1 = Math.Pow(10, ((float)(beac.Rssi + 65) * -1) / 20)*100;
+                        beaconItem.Rssis = new List<int>();
                     }
-                    else if (beac.Major == 414 && beac.Minor == 720)
+                    //if (item.Rssi > beaconItem.Rssi)
                     {
-                        distance.Dist2 = Math.Pow(10, ((float)(beac.Rssi + 65) * -1) / 20)*100;
+                        beaconItem.Rssis.Add(item.Rssi);
+                        //beaconItem.Distance = dist;
                     }
-                    else
-                    {
-                        distance.Dist3 = Math.Pow(10, ((float)(beac.Rssi + 65) * -1) / 20)*100;
-                    }
-                    
                 }
-                distance.total = distance.Dist1 + distance.Dist2 + distance.Dist3;
-
-
-                switch ((ProximityType)beacon.Proximity)
+                else
                 {
-                    case ProximityType.Immediate:
-                        UpdateDisplay("You found the monkey!", Color.Green);
-                        break;
-                    case ProximityType.Near:
-                        UpdateDisplay("You're getting warmer", Color.Yellow);
-                        break;
-                    case ProximityType.Far:
-                        UpdateDisplay("You're freezing cold", Color.Blue);
-                        break;
-                    case ProximityType.Unknown:
-                        UpdateDisplay("I'm not sure how close you are to the monkey", Color.Red);
-                        break;
+                    IndoorLayout.FoundBeacons.Add(new BeaconModel
+                    {
+                        Major = item.Major,
+                        Minor = item.Minor,
+                        Rssis = new List<int>() { item.Rssi },
+                       // Distance = dist,
+                        DetectTime = DateTime.Now
+                    });
                 }
-
-                _previousProximity = beacon.Proximity;
             }
+
+            //if (e.Beacons.Count < 3)
+            //{
+            //    Console.WriteLine("Did not find enoough beacons.");
+            //}
+            //else
+            //{
+            //    var beacon = e.Beacons.FirstOrDefault();
+
+            //    var message = string.Empty;
+            //    var rssi = beacon.Rssi;
+            //    var distance1 = Math.Pow(10, ((float)(rssi + 65) * -1) / 20);
+
+            //    LstBeacons lstBeacons = new LstBeacons();
+            //    lstBeacons.beaconModels = new List<BeaconModel>();
+            //    foreach (var beac in e.Beacons)
+            //    {
+            //        BeaconModel beaconModel = new BeaconModel();
+            //        beaconModel.Minor = beac.Minor;
+            //        beaconModel.Major = beac.Major;
+            //        beaconModel.Distance = Math.Pow(10, ((float)(beac.Rssi + 65) * -1) / 20) * 100;
+            //        lstBeacons.beaconModels.Add(beaconModel);
+            //    }
+            //    lstBeacons.Flag = 1;
+            //    //DistanceModel distance = new DistanceModel();
+            //    //foreach (var beac in e.Beacons)
+            //    //{
+            //    //    if (beac.Major == 829 && beac.Minor == 0)
+            //    //    {
+            //    //        distance.Dist1 = Math.Pow(10, ((float)(beac.Rssi + 65) * -1) / 20) * 100;
+            //    //    }
+            //    //    else if (beac.Major == 829 && beac.Minor == 720)
+            //    //    {
+            //    //        distance.Dist2 = Math.Pow(10, ((float)(beac.Rssi + 65) * -1) / 20) * 100;
+            //    //    }
+            //    //    else if (beac.Major == 1244 && beac.Minor == 720)
+            //    //    {
+            //    //        distance.Dist3 = Math.Pow(10, ((float)(beac.Rssi + 65) * -1) / 20) * 100;
+            //    //    }
+
+            //    //}
+            //    //distance.total = distance.Dist1 + distance.Dist2 + distance.Dist3;
+
+
+            //    switch ((ProximityType)beacon.Proximity)
+            //    {
+            //        case ProximityType.Immediate:
+            //            UpdateDisplay("You found the monkey!", Color.Green);
+            //            break;
+            //        case ProximityType.Near:
+            //            UpdateDisplay("You're getting warmer", Color.Yellow);
+            //            break;
+            //        case ProximityType.Far:
+            //            UpdateDisplay("You're freezing cold", Color.Blue);
+            //            break;
+            //        case ProximityType.Unknown:
+            //            UpdateDisplay("I'm not sure how close you are to the monkey", Color.Red);
+            //            break;
+            //    }
+
+            //    _previousProximity = beacon.Proximity;
+            //}
         }
 
         #region IBeaconConsumer impl
@@ -163,7 +213,7 @@ namespace IndoorNavigation.Droid
         {
             RunOnUiThread(() =>
             {
-                
+
             });
         }
 
