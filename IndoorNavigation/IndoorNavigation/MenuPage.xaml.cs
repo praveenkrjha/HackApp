@@ -55,7 +55,7 @@ namespace IndoorNavigation
             const int _animationTime = 20;
             await ViewAttendance.ScaleTo(1.2, _animationTime);
             await ViewAttendance.ScaleTo(1, _animationTime);
-            
+            await Navigation.PushAsync(new AttendancePage());
         }
 
         private void TapGestureRecognizer_Tapped_4(object sender, EventArgs e)

@@ -80,12 +80,14 @@ namespace IndoorNavigation
         {
             RestHttpClient.DefaultRequestHeaders.Clear();
             RestHttpClient.DefaultRequestHeaders.Add(RequestToken, RequestTokenValue);
-            if (args.Length > 0)
+            string securityToken = string.Empty;
+            if (App.Current.Properties.ContainsKey("SecurityToken"))
             {
-                var securityToken = Convert.ToString(args[0]);
-                if (!string.IsNullOrEmpty(securityToken))
-                    RestHttpClient.DefaultRequestHeaders.Add(SecurityToken, securityToken);
+                securityToken = Convert.ToString(App.Current.Properties["SecurityToken"]);
             }
+            if (!string.IsNullOrEmpty(securityToken))
+                RestHttpClient.DefaultRequestHeaders.Add(SecurityToken, securityToken);
+
             var response = new HttpResponseMessage();
             // var payLoad = objectPayLoad == null ? string.Empty : JsonConvert.SerializeObject(objectPayLoad);
             try
