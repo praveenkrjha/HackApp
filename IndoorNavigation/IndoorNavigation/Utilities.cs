@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -72,6 +73,29 @@ namespace IndoorNavigation
             return userLocation;
         }
 
+        public static  double CalculateDistanceFromRssi(int rssi)
+        {
+            return Math.Pow(10, ((float)(rssi + 65) * -1) / 40) * 100;
+        }
+
+        public static double CalcMedianRssi(List<int> rssis)
+        {
+            int numberCount = rssis.Count();
+            int halfIndex = rssis.Count() / 2;
+            var sortedNumbers = rssis.OrderBy(n => n);
+            double median;
+            if ((numberCount % 2) == 0)
+            {
+
+                median = ((sortedNumbers.ElementAt(halfIndex) + sortedNumbers.ElementAt(halfIndex - 1)) / 2);
+                //median = ((sortedNumbers.ElementAt(halfIndex) + sortedNumbers.ElementAt(2)));
+            }
+            else
+            {
+                median = sortedNumbers.ElementAt(halfIndex);
+            }
+            return median;
+        }
 
     }
 
