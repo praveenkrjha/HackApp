@@ -9,6 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndoorNavigation.iOS", "Ind
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IndoorNavigation", "IndoorNavigation\IndoorNavigation\IndoorNavigation.csproj", "{567E07F4-05C4-4E54-BDEF-9603CC91936E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FFE70DC9-E91F-476A-9583-2E11F321A677}"
+	ProjectSection(SolutionItems) = preProject
+		IndoorNavigation\Lib\Android-iBeacon-Service.dll = IndoorNavigation\Lib\Android-iBeacon-Service.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
