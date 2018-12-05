@@ -33,14 +33,14 @@
                                 <Label x:Name="UsernameLabel" Text="Username" TextColor="White" Style="{DynamicResource regularTextPrimeryStyleTheme}"/>
                                 <Entry x:Name="UsernameEntry" Unfocused="Username_Focussed" Focused="Username_Focussed" 
                                                                  Placeholder="" PlaceholderColor="DimGray" 
-                                                                 Text="{Binding LoginName}" BackgroundColor="Transparent" TextColor="Black" FontSize="20" Style="{DynamicResource regularTextPrimeryStyleTheme}"/>
+                                                                 Text="nagarjuna.gade@jda.com" BackgroundColor="Transparent" TextColor="Black" FontSize="20" Style="{DynamicResource regularTextPrimeryStyleTheme}"/>
                                 <!--<Label x:Name="UsernameErrorLabel" IsVisible="{Binding IsUsernameError, Mode=TwoWay}" Text="Username*" TextColor="Red" Style="{DynamicResource regularTextPrimeryStyleTheme}" FontSize="12"/>-->
                             </StackLayout>
                             <StackLayout Spacing="0" Padding="0,20,0,0" Orientation="Vertical" VerticalOptions="FillAndExpand" IsVisible="False" x:Name="stkPwd">
                                 <Label x:Name="PasswordLabel" Text="Password" TextColor="White" Style="{DynamicResource regularTextPrimeryStyleTheme}"/>
                                 <Entry x:Name="PasswordEntry" Unfocused="Password_Focussed" Focused="Password_Focussed" 
                                                                  Placeholder="" PlaceholderColor="DimGray"
-                                                                 BackgroundColor="Transparent" Text="{Binding Password}" TextColor="Black" FontSize="20" IsPassword="True" Style="{DynamicResource regularTextPrimeryStyleTheme}"/>
+                                                                 BackgroundColor="Transparent" Text="123456" TextColor="Black" FontSize="20" IsPassword="True" Style="{DynamicResource regularTextPrimeryStyleTheme}"/>
                                 <!--<Label x:Name="PasswordErrorLabel" IsVisible="{Binding IsPasswordError, Mode=TwoWay}" Text="Password*" TextColor="Red" Style="{DynamicResource regularTextPrimeryStyleTheme}" FontSize="12"/>-->
                             </StackLayout>
                             <StackLayout IsVisible="False" HorizontalOptions="End" Padding="0,10,0,0" VerticalOptions="FillAndExpand">
