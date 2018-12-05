@@ -40,7 +40,7 @@ namespace IndoorNavigation
                 stkPwd.ScaleTo(1, 1000, Easing.BounceOut);
             }
             else
-                App.Current.MainPage = new IndoorLayout();
+                App.Current.MainPage = new NavigationPage(new MenuPage());
         }
     }
 }

@@ -38,7 +38,7 @@ namespace IndoorNavigation
             const int _animationTime = 20;
             await WhereamiStk.ScaleTo(1.2, _animationTime);
             await WhereamiStk.ScaleTo(1, _animationTime);
-           
+            await Navigation.PushAsync(new IndoorLayout());
             
         }
 
@@ -56,6 +56,11 @@ namespace IndoorNavigation
             await ViewAttendance.ScaleTo(1.2, _animationTime);
             await ViewAttendance.ScaleTo(1, _animationTime);
             
+        }
+
+        private async void TapGestureRecognizer_Tapped_4(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MainPage());
         }
     }
 }

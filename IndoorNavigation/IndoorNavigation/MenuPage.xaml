@@ -58,6 +58,12 @@
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
             </StackLayout>
+
+            <Label Text="Logout" FontAttributes="Bold" TextColor="Blue" FontSize="Default" VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand" Margin="0,0,20,15">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer  Tapped="TapGestureRecognizer_Tapped_4" />
+                </Label.GestureRecognizers>
+            </Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
