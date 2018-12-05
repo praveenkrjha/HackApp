@@ -54,7 +54,7 @@ namespace IndoorNavigation.Droid
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-
+            AndroidEnvironment.UnhandledExceptionRaiser += HandleAndroidException;
             base.OnCreate(savedInstanceState);
             Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, savedInstanceState);
             RequestPermissions(PermissionsLocation, RequestLocationId);
@@ -67,6 +67,12 @@ namespace IndoorNavigation.Droid
             _rangeNotifier.DidRangeBeaconsInRegionComplete += RangingBeaconsInRegion;
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
+        }
+
+        void HandleAndroidException(object sender, RaiseThrowableEventArgs e)
+        {
+            e.Handled = true;
+            Console.Write("HANDLED EXCEPTION");
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

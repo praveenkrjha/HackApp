@@ -55,12 +55,13 @@ namespace IndoorNavigation
             const int _animationTime = 20;
             await ViewAttendance.ScaleTo(1.2, _animationTime);
             await ViewAttendance.ScaleTo(1, _animationTime);
-            
+            await Navigation.PushAsync(new AttendancePage());
         }
 
-        private async void TapGestureRecognizer_Tapped_4(object sender, EventArgs e)
+        private void TapGestureRecognizer_Tapped_4(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MainPage());
+            App.Current.Properties.Clear();
+            App.Current.MainPage = new NavigationPage(new MainPage());
         }
     }
 }

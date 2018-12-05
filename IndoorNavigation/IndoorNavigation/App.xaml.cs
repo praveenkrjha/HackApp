@@ -10,8 +10,14 @@ namespace IndoorNavigation
         public App()
         {
             InitializeComponent();
-
-            MainPage = new NavigationPage(new MainPage());
+            if (App.Current.Properties.ContainsKey("SecurityToken") && App.Current.Properties["SecurityToken"]!=null)
+            {
+                MainPage = new NavigationPage(new MenuPage());
+            }
+            else
+            {
+                MainPage = new NavigationPage(new MainPage());
+            }
         }
 
         protected override void OnStart()

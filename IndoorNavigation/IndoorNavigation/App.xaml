@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:util="clr-namespace:IndoorNavigation"
              x:Class="IndoorNavigation.App">
     <Application.Resources>
         <ResourceDictionary>
 
-            <!--<util:StringToBoolConverter x:Key="StringToBoolConverter"/>
-            <converters:NetDeltaHours x:Key="cnvNetDeltaHours"></converters:NetDeltaHours>
-            <util:DoubleToTimeStringConverter x:Key="DoubleToTimeStringConverter"/>
-            --><!--<converters:DoubleToString x:Key="cnvNetDeltaHours"></converters:DoubleToString>--><!--
+            <util:BoolToColorConverter x:Key="BoolToColorConverter"/>
+            <!--<converters:NetDeltaHours x:Key="cnvNetDeltaHours"></converters:NetDeltaHours>
+            <util:DoubleToTimeStringConverter x:Key="DoubleToTimeStringConverter"/>-->
+            <!--<converters:DoubleToString x:Key="cnvNetDeltaHours"></converters:DoubleToString>--><!--
             <converters:DoubleToColor x:Key="cnvNetDeltaHoursColor"></converters:DoubleToColor>
             <converters:IntToString x:Key="cnvSelectedShifts"></converters:IntToString>
             <converters:DateToDayMonthStringConverter x:Key="cnvDateToDayMonthStringConverter"/>
