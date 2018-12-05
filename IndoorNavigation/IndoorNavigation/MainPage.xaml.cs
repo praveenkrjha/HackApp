@@ -72,7 +72,7 @@ namespace IndoorNavigation
                 {
                     if (resp.IsSuccess)
                     {
-                        App.Current.MainPage = new IndoorLayout();
+                        App.Current.MainPage = new NavigationPage(new MenuPage());
                     }
                     else
                     {

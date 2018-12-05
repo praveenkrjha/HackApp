@@ -23,7 +23,7 @@ namespace IndoorNavigation.Droid
         readonly string[] PermissionsLocation =
     {
       Manifest.Permission.AccessCoarseLocation,
-      Manifest.Permission.AccessFineLocation
+      Manifest.Permission.AccessFineLocation,Manifest.Permission.UseFingerprint
     };
 
         const int RequestLocationId = 0;
