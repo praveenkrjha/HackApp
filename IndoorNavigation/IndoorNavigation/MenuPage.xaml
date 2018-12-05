@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IndoorNavigation.MenuPage">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout Orientation="Vertical" Spacing="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                <StackLayout x:Name="WhereamiStk" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Padding="0" Margin="0,0,0,-50">
+                    <Frame HeightRequest="150" WidthRequest="150" CornerRadius="100" Padding="0" HasShadow="False" BackgroundColor="#2196F3">
+                        <Label Text="Where am I" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="20" TextColor="White"/>
+                    </Frame>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" >
+                    <StackLayout x:Name="MarkAttendance" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Padding="0"  >
+                        <Frame HeightRequest="150" WidthRequest="150" CornerRadius="100" Padding="0" HasShadow="False" BackgroundColor="#D32F2F">
+                            <StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                <Label Text="Mark" LineBreakMode="WordWrap" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="20" TextColor="White"/>
+                                <Label Text="Attendance" LineBreakMode="WordWrap" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="20" TextColor="White"/>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </Frame>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"/>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <StackLayout x:Name="ViewAttendance" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Padding="0"  >
+                        <Frame HeightRequest="150" WidthRequest="150" CornerRadius="100" Padding="0" HasShadow="False" BackgroundColor="#0097A7">
+                            <StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                <Label Text="View" LineBreakMode="WordWrap" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="20" TextColor="White"/>
+                                <Label Text="Attendance" LineBreakMode="WordWrap" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="20" TextColor="White"/>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3"/>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </Frame>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3"/>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout x:Name="OuterStk" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Padding="0" Margin="0,-50,0,0">
+                    <Frame HeightRequest="150" WidthRequest="150" CornerRadius="100" Padding="0" HasShadow="False" BackgroundColor="#FF9800">
+                        <StackLayout x:Name="InnerStk" Orientation="Vertical" Spacing="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                            <Label Text="Locate" LineBreakMode="WordWrap" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="20" TextColor="White"/>
+                            <Label Text="Product" LineBreakMode="WordWrap" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="20" TextColor="White"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" NumberOfTapsRequired="1"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </Frame>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" NumberOfTapsRequired="1"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
