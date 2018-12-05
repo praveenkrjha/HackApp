@@ -43,7 +43,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Android-iBeacon-Service">
-      <HintPath>..\..\..\xamarin-android-ibeacon-service-master\xamarin-android-ibeacon-service-master\Android-iBeacon-Service\bin\Release\Android-iBeacon-Service.dll</HintPath>
+      <HintPath>..\Lib\Android-iBeacon-Service.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="System" />

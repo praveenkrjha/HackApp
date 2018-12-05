@@ -618,7 +618,7 @@
       ]
     },
     "Xamarin.Forms/3.1.0.697729": {
-      "sha512": "oYfHpCY9i9wN4vLllsIhzDZY5iOCUtZ3RHxID1fiXOcf7yL9UA16NUsI8opoNmpv1Ru2lTGG9ZKKT1sYS6DLjA==",
+      "sha512": "YlFOM9u8onIRxJwYJ3l+O0wFKqzzrDjDrgnoBr1rct+eaQKU77vFydxvTP+WxYlYzR14hYvyLNC65L84+6ke6w==",
       "type": "package",
       "path": "xamarin.forms/3.1.0.697729",
       "files": [
@@ -782,20 +782,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\1024312\\.nuget\\packages\\": {}
+    "C:\\Users\\1024401\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Samples\\Hack2018\\HackApp\\IndoorNavigation\\IndoorNavigation.iOS\\IndoorNavigation.iOS.csproj",
+      "projectUniqueName": "C:\\Users\\1024401\\Source\\Repos\\HackApp\\IndoorNavigation\\IndoorNavigation.iOS\\IndoorNavigation.iOS.csproj",
       "projectName": "IndoorNavigation.iOS",
-      "projectPath": "C:\\Samples\\Hack2018\\HackApp\\IndoorNavigation\\IndoorNavigation.iOS\\IndoorNavigation.iOS.csproj",
-      "packagesPath": "C:\\Users\\1024312\\.nuget\\packages\\",
-      "outputPath": "C:\\Samples\\Hack2018\\HackApp\\IndoorNavigation\\IndoorNavigation.iOS\\obj\\",
+      "projectPath": "C:\\Users\\1024401\\Source\\Repos\\HackApp\\IndoorNavigation\\IndoorNavigation.iOS\\IndoorNavigation.iOS.csproj",
+      "packagesPath": "C:\\Users\\1024401\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\1024401\\Source\\Repos\\HackApp\\IndoorNavigation\\IndoorNavigation.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
-        "C:\\Users\\1024312\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\1024401\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -808,8 +808,8 @@
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "C:\\Samples\\Hack2018\\HackApp\\IndoorNavigation\\IndoorNavigation\\IndoorNavigation.csproj": {
-              "projectPath": "C:\\Samples\\Hack2018\\HackApp\\IndoorNavigation\\IndoorNavigation\\IndoorNavigation.csproj"
+            "C:\\Users\\1024401\\Source\\Repos\\HackApp\\IndoorNavigation\\IndoorNavigation\\IndoorNavigation.csproj": {
+              "projectPath": "C:\\Users\\1024401\\Source\\Repos\\HackApp\\IndoorNavigation\\IndoorNavigation\\IndoorNavigation.csproj"
             }
           }
         }
