@@ -25,6 +25,7 @@ namespace IndoorNavigation.Services
 
                 // Set the Method property to 'POST' to post data to the URI.
                 request.Method = "POST";
+                request.Headers.Add("RequestToken", AppConstants.RequestToken);
                 inputDataString = data;
                 //client.DefaultRequestHeaders.Add("Authorization", AppConstants.user_id);
                 var content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -93,7 +94,8 @@ namespace IndoorNavigation.Services
             try
             {
                 HttpClient wc = new HttpClient();
-                //wc.DefaultRequestHeaders.Add("Authorization", AppConstants.user_id);
+                wc.DefaultRequestHeaders.Add("RequestToken", AppConstants.RequestToken);
+                wc.DefaultRequestHeaders.Add("Content-Type", "application/json");
                 try
                 {
                     var resp = await wc.GetStringAsync(url);

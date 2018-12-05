@@ -15,8 +15,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\HackApi\JDA.Entities\JDA.Entities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Update="IndoorLayout.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="RestClient\" />
   </ItemGroup>
 </Project>
