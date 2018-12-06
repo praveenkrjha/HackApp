@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="IndoorNavigation.MarkAttendancePage">
+             x:Class="IndoorNavigation.MarkAttendancePage" Title="Mark Attendance">
     <ContentPage.Content>
         <StackLayout>
+            <Label Text="Please scan your finger" TextColor="Black" FontSize="Large" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
             <Image Source="fingerprint.png" HeightRequest="100" WidthRequest="100" Aspect="AspectFit" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"/>
         </StackLayout>
     </ContentPage.Content>
