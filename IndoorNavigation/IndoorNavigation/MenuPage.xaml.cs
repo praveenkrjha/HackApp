@@ -35,33 +35,54 @@ namespace IndoorNavigation
 
         private async void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
         {
-            const int _animationTime = 20;
-            await WhereamiStk.ScaleTo(1.2, _animationTime);
-            await WhereamiStk.ScaleTo(1, _animationTime);
-            await Navigation.PushAsync(new IndoorLayout());
-            
+            try
+            {
+                const int _animationTime = 20;
+                await WhereamiStk.ScaleTo(1.2, _animationTime);
+                await WhereamiStk.ScaleTo(1, _animationTime);
+                await Navigation.PushAsync(new IndoorLayout());
+            }
+            catch
+            {
+
+            }
         }
 
         private async void TapGestureRecognizer_Tapped_2(object sender, EventArgs e)
         {
-            const int _animationTime = 20;
-            await MarkAttendance.ScaleTo(1.2, _animationTime);
-            await MarkAttendance.ScaleTo(1, _animationTime);
-            await Navigation.PushAsync(new MarkAttendancePage());
+            try
+            {
+                const int _animationTime = 20;
+                await MarkAttendance.ScaleTo(1.2, _animationTime);
+                await MarkAttendance.ScaleTo(1, _animationTime);
+                await Navigation.PushAsync(new MarkAttendancePage());
+            }
+            catch
+            {
+
+            }
         }
 
         private async void TapGestureRecognizer_Tapped_3(object sender, EventArgs e)
         {
-            const int _animationTime = 20;
-            await ViewAttendance.ScaleTo(1.2, _animationTime);
-            await ViewAttendance.ScaleTo(1, _animationTime);
-            await Navigation.PushAsync(new AttendancePage());
+            try
+            {
+                const int _animationTime = 20;
+                await ViewAttendance.ScaleTo(1.2, _animationTime);
+                await ViewAttendance.ScaleTo(1, _animationTime);
+                await Navigation.PushAsync(new AttendancePage());
+            }
+            catch { }
         }
 
         private void TapGestureRecognizer_Tapped_4(object sender, EventArgs e)
         {
-            App.Current.Properties.Clear();
-            App.Current.MainPage = new NavigationPage(new MainPage());
+            try
+            {
+                App.Current.Properties.Clear();
+                App.Current.MainPage = new NavigationPage(new MainPage());
+            }
+            catch { }
         }
     }
 }

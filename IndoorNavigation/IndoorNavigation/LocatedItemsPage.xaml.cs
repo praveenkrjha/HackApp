@@ -1,4 +1,5 @@
-﻿using JDA.Entities.Response;
+﻿using IndoorNavigation.Helpers;
+using JDA.Entities.Response;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace IndoorNavigation
             }
             else
             {
-                LstView.HeightRequest = 0;
+                //LstView.HeightRequest = 0;
             }
             if (Vm != null && Vm.Facilities != null && Vm.Facilities.Count > 0)
             {
@@ -33,9 +34,14 @@ namespace IndoorNavigation
             }
             else
             {
-                LstView1.HeightRequest = 0;
+                //LstView1.HeightRequest = 0;
             }
         }
-      
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            var item = ((sender as Grid).BindingContext as MyProducts);
+            Navigation.PushAsync(new LocateItemPage(item.LocationX, item.LocationY));
+        }
     }
 }

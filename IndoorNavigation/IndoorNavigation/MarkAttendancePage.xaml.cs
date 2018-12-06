@@ -44,9 +44,17 @@ namespace IndoorNavigation
 
         private async Task<bool> MarkAttendance()
         {
-            var restClient = new RestClient();
-            var resp = await restClient.PostAsync<BlankRequest, ServiceResponse<string>>(AppConstants.BaseUrl + "Attendance", new BlankRequest { Id = 1 });
-            return resp.IsSuccess;
+            try
+            {
+                var restClient = new RestClient();
+                var resp = await restClient.PostAsync<BlankRequest, ServiceResponse<string>>(AppConstants.BaseUrl + "Attendance", new BlankRequest { Id = 1 });
+                return resp.IsSuccess;
+            }
+            catch
+            {
+                await DisplayAlert("", "Failed to reach server", "Ok");
+                return false;
+            }
         }
 
 

@@ -4,7 +4,13 @@
              x:Class="IndoorNavigation.LocateItemPage">
     <ContentPage.Content>
         <StackLayout>
-            <AbsoluteLayout HeightRequest="552" WidthRequest="240" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" x:Name="abs">
+            <StackLayout Orientation="Horizontal" HeightRequest="20" HorizontalOptions="CenterAndExpand">
+                <Frame HeightRequest="10" WidthRequest="10" CornerRadius="5" BackgroundColor="Gold"/>
+                <Label Text="Destination" TextColor="Black" FontSize="8" VerticalTextAlignment="Center"/>
+                <Frame HeightRequest="10" WidthRequest="10" CornerRadius="5" BackgroundColor="#106DE9" Margin="30,0,0,0"/>
+                <Label Text="You" TextColor="Black" FontSize="8" VerticalTextAlignment="Center"/>
+            </StackLayout>
+            <AbsoluteLayout HeightRequest="570" WidthRequest="246" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" x:Name="abs">
                 <Image AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Source="FloorPlan.png">
 
                 </Image>
