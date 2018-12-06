@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:IndoorNavigation"
              xmlns:customcontrols="clr-namespace:IndoorNavigation.CustomControls"
-             x:Class="IndoorNavigation.MainPage">
+             x:Class="IndoorNavigation.MainPage" NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Content>
         <ScrollView x:Name="loginScroll">
