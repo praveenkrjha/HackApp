@@ -74,6 +74,14 @@ namespace IndoorNavigation
                     {
                         if (resp.IsSuccess)
                         {
+                            if (App.Current.Properties.ContainsKey("User"))
+                            {
+                                App.Current.Properties["User"] = resp.Data.UserDetails.FirstName + " " + resp.Data.UserDetails.LastName;
+                            }
+                            else
+                            {
+                                App.Current.Properties.Add("User", resp.Data.UserDetails.FirstName + " " + resp.Data.UserDetails.LastName);
+                            }
                             App.Current.MainPage = new NavigationPage(new MenuPage());
                         }
                         else

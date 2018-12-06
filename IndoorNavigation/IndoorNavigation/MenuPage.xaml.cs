@@ -15,6 +15,11 @@ namespace IndoorNavigation
         public MenuPage()
         {
             InitializeComponent();
+            try
+            {
+                lblUser.Text = "Welcome " + App.Current.Properties["User"].ToString();
+            }
+            catch { }
         }
 
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
