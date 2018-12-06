@@ -5,7 +5,7 @@
     <ContentPage.Content>
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <StackLayout Orientation="Vertical" Spacing="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-                <StackLayout x:Name="WhereamiStk" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Padding="0" Margin="0,0,0,-50">
+                <StackLayout x:Name="WhereamiStk" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Padding="0" Margin="0,0,0,-20">
                     <Frame HeightRequest="150" WidthRequest="150" CornerRadius="100" Padding="0" HasShadow="False" BackgroundColor="#2196F3">
                         <Label Text="Where am I" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="20" TextColor="White"/>
                     </Frame>
@@ -43,7 +43,7 @@
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
                 </StackLayout>
-                <StackLayout x:Name="OuterStk" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Padding="0" Margin="0,-50,0,0">
+                <StackLayout x:Name="OuterStk" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Padding="0" Margin="0,-20,0,0">
                     <Frame HeightRequest="150" WidthRequest="150" CornerRadius="100" Padding="0" HasShadow="False" BackgroundColor="#FF9800">
                         <StackLayout x:Name="InnerStk" Orientation="Vertical" Spacing="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                             <Label Text="Locate" LineBreakMode="WordWrap" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="20" TextColor="White"/>
