@@ -17,7 +17,7 @@ namespace IndoorNavigation
         private Timer timer;
         public static ConcurrentBag<BeaconModel> FoundBeacons = new ConcurrentBag<BeaconModel>();
 
-        private double CalculateDistanceFromRssi(int rssi)
+        public static double CalculateDistanceFromRssi(int rssi)
         {
             return Math.Pow(10, ((float)(rssi + 65) * -1) / 40) * 100;
         }
@@ -41,11 +41,35 @@ namespace IndoorNavigation
             return median;
         }
 
+        public static PointF GetMedianPoint(BeaconModel a, BeaconModel b, BeaconModel c = null)
+        {
+            PointF point = null;
+            if (c == null)
+            {
+                var dist1 = CalculateDistanceFromRssi(a.Rssi);
+                var dist2 = CalculateDistanceFromRssi(b.Rssi);
+                point = Utilities.GetLocationWithCenterOfGravity(new PointF(a.Major, a.Minor), new PointF(b.Major, b.Minor)
+                    , dist1, dist2);
+            }
+            else
+            {
+                var dist1 = CalculateDistanceFromRssi(a.Rssi);
+                var dist2 = CalculateDistanceFromRssi(b.Rssi);
+                var dist3 = CalculateDistanceFromRssi(c.Rssi);
+                point = Utilities.GetLocationWithCenterOfGravity(new PointF(a.Major, a.Minor), new PointF(b.Major, b.Minor)
+                    , new PointF(c.Major, c.Minor), dist1, dist2, dist3);
+            }
+            return point;
+        }
+
         private void TimerCallback(object state)
         {
-            if (FoundBeacons.Count >= 3)
+
+
+            if (FoundBeacons.Count >= 2)
             {
-                timer = new Timer(TimerCallback, null, Timeout.Infinite, Timeout.Infinite);
+                timer.Change(Timeout.Infinite, Timeout.Infinite);
+                //timer = new Timer(TimerCallback, null, Timeout.Infinite, Timeout.Infinite);
                 var e = FoundBeacons.ToList();
                 foreach(var item in e)
                 {
@@ -59,22 +83,29 @@ namespace IndoorNavigation
                     {
                         if(abs.Children.Count > 1)
                             abs.Children.RemoveAt(1);
-                        var dist1 = CalculateDistanceFromRssi(e[0].Rssi);
-                        var dist2 = CalculateDistanceFromRssi(e[1].Rssi);
-                        var dist3 = CalculateDistanceFromRssi(e[2].Rssi);
-                        var point = Utilities.GetLocationWithCenterOfGravity(new PointF(e[0].Major, e[0].Minor), new PointF(e[1].Major, e[1].Minor)
-                            , new PointF(e[2].Major, e[2].Minor), dist1, dist2, dist3);
-                        var yPer = ((point.Y / 720) * 100);
-                        var y = (yPer / 100) * (AppConstants.FloorLength - 10);
 
-                         var xPer = ((point.X / 1650) * 100);
-                        var x = (xPer / 100) * (AppConstants.FloorWidth - 10);
+                        var point = GetMedianPoint(e[0], e[1], (e.Count == 3 ? e[2] : null));
+                        if (e.Count == 2)
+                            AppConstants.PositionHeight = 50;
+                        else if(e.Count >= 3)
+                            AppConstants.PositionHeight = 30;
+
+                        var yPer = ((point.Y / 720) * 100);
+                        var y = (yPer / 100) * (240 - 10);
+
+                        var xPer = ((point.X / 1650) * 100);
+                        var x = (xPer / 100) * (552 - 10);
+                        //var yPer = ((point.Y / 720) * 100);
+                        //var y = (yPer / 100) * (AppConstants.FloorLength - 10);
+
+                        // var xPer = ((point.X / 1650) * 100);
+                        //var x = (xPer / 100) * (AppConstants.FloorWidth - 10);
                          Frame frmNew = new Frame();
                         frmNew.HeightRequest = AppConstants.PositionHeight;
                         frmNew.WidthRequest = AppConstants.PositionHeight;
                         frmNew.CornerRadius = (float)AppConstants.PositionHeight/2;
                         frmNew.BackgroundColor = AppConstants.PositionColor;
-                        abs.Children.Add(frmNew, new Rectangle(x, y, AppConstants.PositionHeight, AppConstants.PositionHeight));
+                        abs.Children.Add(frmNew, new Rectangle(y, x, AppConstants.PositionHeight, AppConstants.PositionHeight));
                     }
                     catch
                     {
@@ -82,13 +113,13 @@ namespace IndoorNavigation
                     }
                 });
             }
-
-            timer = new Timer(TimerCallback, null, 2000, 2000);
+            timer.Change(3000, 3000);
+            //timer = new Timer(TimerCallback, null, 2000, 2000);
         }
 
         public IndoorLayout ()
 		{
-            timer = new Timer(TimerCallback, null, 2000, 2000);
+            timer = new Timer(TimerCallback, null, 3000, 3000);
 
             InitializeComponent ();
             //PointF point = Utilities.GetLocationWithCenterOfGravity(new PointF(829, 0), new PointF(414, 720), new PointF(1244, 720), 60, 100, 100);

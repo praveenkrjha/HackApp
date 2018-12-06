@@ -4,51 +4,53 @@
              x:Class="IndoorNavigation.LocatedItemsPage" Title="Items">
     <ContentPage.Content>
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
-            <Label Text="Products" TextColor="Orange" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Margin="0,10,0,0" />
-            <ListView x:Name="LstView" ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}" HasUnevenRows="False" SeparatorColor="Gray" SeparatorVisibility="Default" RowHeight="60"  Margin="4">
+            <Label Text="Products" TextColor="Orange" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Margin="0,10,0,0" />
+            <ListView x:Name="LstView" VerticalOptions="Start" ItemsSource="{Binding Products}" HeightRequest="240" MinimumHeightRequest="240" SelectedItem="{Binding SelectedProduct}" HasUnevenRows="False" SeparatorColor="Gray" SeparatorVisibility="Default" RowHeight="60"  Margin="4">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid  Padding="0">
+                            <Grid Padding="0" HeightRequest="70">
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                </Grid.GestureRecognizers>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="60*"/>
-                                    <ColumnDefinition Width="150*"/>
+                                    <ColumnDefinition Width="30*"/>
+                                    <ColumnDefinition Width="70*"/>
                                 </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
-                                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="{Binding Source}" Aspect="AspectFit" HeightRequest="100" WidthRequest="100" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="5,2,2,2"/>
-                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}" Margin="5,0,0,0" TextColor="Gray" FontSize="Medium" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
-                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Description}" Margin="5,0,0,0" TextColor="Gray" FontSize="12" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
-                                <Label Grid.Row="0" Grid.Column="1" IsVisible="False" Text="{Binding LocationX}" Margin="5,0,0,0" TextColor="Gray" FontSize="Medium" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
-                                <Label Grid.Row="0" Grid.Column="1" IsVisible="False" Text="{Binding LocationY}" Margin="5,0,0,0" TextColor="Gray" FontSize="Medium" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="{Binding Source}" Aspect="AspectFit" HeightRequest="50" WidthRequest="50" VerticalOptions="CenterAndExpand" Margin="5,2,2,2"/>
+                                <StackLayout Grid.Column="1">
+                                    <Label Grid.Row="0"  Text="{Binding Name}" Margin="5,0,0,0" TextColor="Gray" FontSize="Medium" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                                    <Label Grid.Row="1" Text="{Binding Description}" Margin="5,0,0,0" TextColor="Gray" FontSize="12" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                                </StackLayout>
+                                <!--<Label Grid.Row="0" Grid.Column="1" IsVisible="False" Text="{Binding LocationX}" Margin="5,0,0,0" TextColor="Gray" FontSize="Medium" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                                <Label Grid.Row="0" Grid.Column="1" IsVisible="False" Text="{Binding LocationY}" Margin="5,0,0,0" TextColor="Gray" FontSize="Medium" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>-->
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
 
-            <Label Text="Facilitates" TextColor="Orange" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Margin="0,10,0,0" />
+            <Label Text="Facilitates" TextColor="Orange" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Margin="0,10,0,0" />
 
-            <ListView Margin="4" x:Name="LstView1" ItemsSource="{Binding Facilities}" SelectedItem="{Binding SelectedFacilitate}" HasUnevenRows="False" SeparatorColor="Gray" SeparatorVisibility="Default" RowHeight="80" >
+            <ListView Margin="4" x:Name="LstView1" ItemsSource="{Binding Facilities}" HeightRequest="160" MinimumHeightRequest="160" SelectedItem="{Binding SelectedFacilitate}" HasUnevenRows="False" SeparatorColor="Gray" SeparatorVisibility="Default" RowHeight="80" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid  Padding="0">
+                            <Grid Padding="0" HeightRequest="70">
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                </Grid.GestureRecognizers>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="60*"/>
-                                    <ColumnDefinition Width="150*"/>
+                                    <ColumnDefinition Width="30*"/>
+                                    <ColumnDefinition Width="70*"/>
                                 </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
-                                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="{Binding Source}" Aspect="AspectFit" HeightRequest="100" WidthRequest="100" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="5,2,2,2"/>
-                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}" Margin="5,0,0,0" TextColor="Gray" FontSize="Medium" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
-                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Description}" Margin="5,0,0,0" TextColor="Gray" FontSize="12" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
-                                <Label Grid.Row="0" Grid.Column="1" IsVisible="False" Text="{Binding LocationX}" Margin="5,0,0,0" TextColor="Gray" FontSize="Medium" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
-                                <Label Grid.Row="0" Grid.Column="1" IsVisible="False" Text="{Binding LocationY}" Margin="5,0,0,0" TextColor="Gray" FontSize="Medium" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="{Binding Source}" Aspect="AspectFit" HeightRequest="50" WidthRequest="50" VerticalOptions="CenterAndExpand" Margin="5,2,2,2"/>
+                                <StackLayout Grid.Column="1">
+                                    <Label Grid.Row="0"  Text="{Binding Name}" Margin="5,0,0,0" TextColor="Gray" FontSize="Medium" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                                    <Label Grid.Row="1" Text="{Binding Description}" Margin="5,0,0,0" TextColor="Gray" FontSize="12" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                                </StackLayout>
+                                <!--<Label Grid.Row="0" Grid.Column="1" IsVisible="False" Text="{Binding LocationX}" Margin="5,0,0,0" TextColor="Gray" FontSize="Medium" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                                <Label Grid.Row="0" Grid.Column="1" IsVisible="False" Text="{Binding LocationY}" Margin="5,0,0,0" TextColor="Gray" FontSize="Medium" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>-->
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

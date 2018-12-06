@@ -30,56 +30,63 @@ namespace IndoorNavigation
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            var restClient = new RestClient();
-            if (!stkPwd.IsVisible)
+            try
             {
-                if (string.IsNullOrEmpty(UsernameEntry.Text))
+                var restClient = new RestClient();
+                if (!stkPwd.IsVisible)
                 {
-                    await DisplayAlert("", "Enter User name", "Ok");
-                    return;
-                }
-                
-                var resp = await restClient.PostAsync<ValidateUserRequest, ServiceResponse<ValidateUserResponse>>(AppConstants.BaseUrl + "ValidateUser", new ValidateUserRequest { EmailId = UsernameEntry.Text });
-
-                if (resp != null)
-                {
-                    if (resp.IsSuccess)
+                    if (string.IsNullOrEmpty(UsernameEntry.Text))
                     {
-                        await stkUName.ScaleTo(0, 1000, Easing.BounceIn);
-                        stkUName.IsVisible = false;
-                        stkPwd.IsVisible = true;
-                        await stkPwd.ScaleTo(1, 1000, Easing.BounceOut);
-                        if (App.Current.Properties.ContainsKey("SecurityToken"))
+                        await DisplayAlert("", "Enter User name", "Ok");
+                        return;
+                    }
+
+                    var resp = await restClient.PostAsync<ValidateUserRequest, ServiceResponse<ValidateUserResponse>>(AppConstants.BaseUrl + "ValidateUser", new ValidateUserRequest { EmailId = UsernameEntry.Text });
+
+                    if (resp != null)
+                    {
+                        if (resp.IsSuccess)
                         {
-                            App.Current.Properties["SecurityToken"] = resp.Data.SecurityToken;
+                            await stkUName.ScaleTo(0, 1000, Easing.BounceIn);
+                            stkUName.IsVisible = false;
+                            stkPwd.IsVisible = true;
+                            await stkPwd.ScaleTo(1, 1000, Easing.BounceOut);
+                            if (App.Current.Properties.ContainsKey("SecurityToken"))
+                            {
+                                App.Current.Properties["SecurityToken"] = resp.Data.SecurityToken;
+                            }
+                            else
+                            {
+                                App.Current.Properties.Add("SecurityToken", resp.Data.SecurityToken);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(PasswordEntry.Text))
+                    {
+                        await DisplayAlert("", "Enter Password", "Ok");
+                    }
+                    var resp = await restClient.PostAsync<RegisterUserRequest, ServiceResponse<RegisterUserResponse>>(AppConstants.BaseUrl + "RegisterUser", new RegisterUserRequest { EmailId = UsernameEntry.Text, Password = Utilities.GetSha256Hash(PasswordEntry.Text) });
+
+                    if (resp != null)
+                    {
+                        if (resp.IsSuccess)
+                        {
+                            App.Current.MainPage = new NavigationPage(new MenuPage());
                         }
                         else
                         {
-                            App.Current.Properties.Add("SecurityToken", resp.Data.SecurityToken);
+                            await DisplayAlert("", "Invalid password", "Ok");
                         }
                     }
+
                 }
             }
-            else
+            catch
             {
-                if(string.IsNullOrEmpty(PasswordEntry.Text))
-                {
-                    await DisplayAlert("", "Enter Password", "Ok");
-                }
-                var resp = await restClient.PostAsync<RegisterUserRequest, ServiceResponse<RegisterUserResponse>>(AppConstants.BaseUrl + "RegisterUser", new RegisterUserRequest { EmailId = UsernameEntry.Text, Password = Utilities.GetSha256Hash(PasswordEntry.Text) });
-
-                if (resp != null)
-                {
-                    if (resp.IsSuccess)
-                    {
-                        App.Current.MainPage = new NavigationPage(new MenuPage());
-                    }
-                    else
-                    {
-                        await DisplayAlert("", "Invalid password", "Ok");
-                    }
-                }
-                
+                await DisplayAlert("", "Failed to reach server", "Ok");
             }
         }
     }

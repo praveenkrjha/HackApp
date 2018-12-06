@@ -19,15 +19,29 @@ namespace IndoorNavigation
             var restClient = new RestClient();
             Device.BeginInvokeOnMainThread(async() =>
             {
-                var resp = await restClient.GetAsync<ServiceResponse<List<AttendenceData>>>(AppConstants.BaseUrl + "Attendance");
-                lstAttendance.ItemsSource = resp.Data;
+                try
+                {
+                    var resp = await restClient.GetAsync<ServiceResponse<List<AttendenceData>>>(AppConstants.BaseUrl + "Attendance");
+                    lstAttendance.ItemsSource = resp.Data;
+                }
+                catch
+                {
+                    await DisplayAlert("", "Failed to reach server", "Ok");
+                }
             });
             lstAttendance.RefreshCommand = new Command(async() => {
                 //Do your stuff.
-                lstAttendance.ItemsSource = null;
-                var resp = await restClient.GetAsync<ServiceResponse<List<AttendenceData>>>(AppConstants.BaseUrl + "Attendance");
-                lstAttendance.ItemsSource = resp.Data;
-                lstAttendance.IsRefreshing = false;
+                try
+                {
+                    lstAttendance.ItemsSource = null;
+                    var resp = await restClient.GetAsync<ServiceResponse<List<AttendenceData>>>(AppConstants.BaseUrl + "Attendance");
+                    lstAttendance.ItemsSource = resp.Data;
+                    lstAttendance.IsRefreshing = false;
+                }
+                catch
+                {
+                    await DisplayAlert("", "Failed to reach server", "Ok");
+                }
             });
         }
 	}
